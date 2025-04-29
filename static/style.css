@@ -1,0 +1,189 @@
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4cc9f0;
+    --text-color: #2b2d42;
+    --light-text: #8d99ae;
+    --light-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --success-color: #4ade80;
+    --error-color: #f87171;
+    --shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    padding: 2rem 0;
+}
+
+.scheduler-panel {
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.panel-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.panel-header h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.panel-header .lead {
+    opacity: 0.9;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+.header-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.time-display {
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.current-time {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--light-text);
+}
+
+form {
+    padding: 1.5rem;
+}
+
+.time-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.time-input-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.input-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.25rem;
+}
+
+.time-input-group:first-child .input-icon {
+    background-color: rgba(255, 193, 7, 0.15);
+    color: #f59e0b;
+}
+
+.time-input-group:last-child .input-icon {
+    background-color: rgba(14, 165, 233, 0.15);
+    color: #0ea5e9;
+}
+
+.input-field {
+    flex: 1;
+}
+
+.input-field label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.9rem;
+    color: var(--light-text);
+}
+
+.form-control {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+    outline: none;
+}
+
+.btn-save {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 0.875rem;
+    border-radius: 10px;
+    width: 100%;
+    font-weight: 600;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(67, 97, 238, 0.2);
+    background: linear-gradient(135deg, #3a50d9, #3128b8);
+    color: white;
+}
+
+.status-message {
+    padding: 1rem;
+    text-align: center;
+    font-weight: 500;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-success {
+    color: var(--success-color);
+}
+
+.status-error {
+    color: var(--error-color);
+}
+
+@media (max-width: 576px) {
+    .time-input-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .input-icon {
+        margin-bottom: 0.5rem;
+    }
+    
+    .input-field {
+        width: 100%;
+    }
+}

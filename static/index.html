@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Light Scheduler Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dashboard-card {
+      background-color: #1e2a38;
+      padding: 2rem;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
+    }
+
+    .dashboard-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .dashboard-header i {
+      font-size: 3rem;
+      color: #ffc107;
+      animation: glow 2s infinite alternate;
+    }
+
+    .dashboard-header h2 {
+      margin-top: 10px;
+      font-weight: 700;
+    }
+
+    .time-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .time-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .btn-custom {
+      background-color: #ffc107;
+      border: none;
+      color: #000;
+      font-weight: 600;
+      width: 100%;
+    }
+
+    .btn-custom:hover {
+      background-color: #e0a800;
+    }
+
+    .time-display {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ffc107;
+      }
+      to {
+        text-shadow: 0 0 20px #fff200;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-card">
+    <div class="dashboard-header">
+      <i class="fas fa-lightbulb"></i>
+      <h2>Light Scheduler</h2>
+      <p>Automate your home lighting schedule</p>
+    </div>
+
+    <form id="schedulerForm">
+      <div class="time-group">
+        <div class="w-50">
+          <label for="onTime"><i class="fas fa-sun"></i> On Time</label>
+          <input type="time" class="form-control" id="onTime" required />
+        </div>
+        <div class="w-50">
+          <label for="offTime"><i class="fas fa-moon"></i> Off Time</label>
+          <input type="time" class="form-control" id="offTime" required />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-custom"><i class="fas fa-save me-2"></i>Save Settings</button>
+    </form>
+
+    <div class="time-display mt-3">
+      <div id="currentTime">--:--:--</div>
+    </div>
+
+    <div id="status" class="mt-2 text-center"></div>
+  </div>
+
+  <script>
+    // Display live clock
+    function updateTime() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString();
+      document.getElementById('currentTime').textContent = timeStr;
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    // Form submission
+    document.getElementById("schedulerForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const onTime = document.getElementById("onTime").value;
+      const offTime = document.getElementById("offTime").value;
+      const status = document.getElementById("status");
+      status.innerHTML = `<span class="text-success">Schedule saved: Lights ON at <b>${onTime}</b>, OFF at <b>${offTime}</b>.</span>`;
+    });
+  </script>
+</body>
+</html>
